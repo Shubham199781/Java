@@ -1,0 +1,41 @@
+package com.shubham.addressBook;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class AddressBookManagement {
+public static void main(String[] args) throws IOException, ParseException {
+	
+	/*FileReader is used to read the JSONFile*/
+	FileReader file=new FileReader("C:/Users/User/Desktop/final/programming/src/com/shubham/addressBook/addressBook.JSON");
+	JSONParser parser=new JSONParser();
+	
+	/*Converting into Object*/
+	Object object=parser.parse(file);
+    JSONObject rootObject=(JSONObject)object;
+    
+    /*Creating an Object of PersonDetails Class*/
+    PersonDetails personDetails=new PersonDetails();
+   
+    /*Created BufferReader Object to take input from the user*/
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    
+    displayName(rootObject);
+    addPerson(rootObject, personDetails,br);
+    updateAddressBook(rootObject, br);
+    deleteDetails(rootObject, br);
+    deleteSpecificDetails(rootObject, br);
+    addressDetails(rootObject, br);
+    genericDetails(rootObject, br);
+    printWholeAddressBook(rootObject);
+}
+
+}
