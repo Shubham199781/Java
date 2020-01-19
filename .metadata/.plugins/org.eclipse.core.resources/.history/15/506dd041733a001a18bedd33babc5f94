@@ -1,0 +1,18 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class DoctorManagement {
+public static void main(String[] args) throws Exception {
+	/*Registering Driver Class*/
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Scanner s=new Scanner(System.in);
+	System.out.println("Enter user name");
+	String userName=s.next();
+	System.out.println("Enter password");
+	String password=s.next();
+	
+}
+
+}

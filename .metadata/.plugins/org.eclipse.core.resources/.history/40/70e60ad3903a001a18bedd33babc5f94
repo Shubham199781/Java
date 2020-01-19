@@ -1,0 +1,126 @@
+package com.shubham.cliniqueManagement;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.sql.*;
+
+
+public class IDoctorImp implements IDoctor {
+
+	@Override
+	public void newEntry(Connection con,Statement stmt,BufferedReader br) throws Exception {
+		
+        String query="insert into doctordetails values(?,?,?,?)";
+        
+        /*Creating DoctorDetails Class Object*/
+        DoctorDetails doctorDetails=new DoctorDetails();
+        
+        /*Taking All Doctor Details*/
+        System.out.println("Enter name of doctor");
+        doctorDetails.setName(br.readLine());
+        
+        System.out.println("Enter id of doctor");
+        doctorDetails.setId(Integer.parseInt(br.readLine()));
+        
+        System.out.println("Enter specialization of doctor");
+        doctorDetails.setSpecialization(br.readLine());
+        
+        System.out.println("Enter availability of doctor");
+        doctorDetails.setAvailability(br.readLine());
+        
+        /*Initializing prepared statement object*/
+        PreparedStatement pstmt=con.prepareStatement(query);
+        pstmt.setString(1,doctorDetails.getName());
+        pstmt.setInt(2, doctorDetails.getId());
+        pstmt.setString(3,doctorDetails.getSpecialization());
+        pstmt.setString(4, doctorDetails.getAvailability());
+        
+        int i=pstmt.executeUpdate();
+        System.out.println(i+" "+"Update Successful");
+        
+        con.close();
+	}
+
+	@Override
+	public void update(Connection con,Statement stmt,BufferedReader br) throws IOException, SQLException {
+		System.out.println("Enter name of doctor you want to update");
+		String doctorName=br.readLine();
+        
+		String query="update doctordetails set id=?,specialization=?,availability=? where name=?";
+		
+		/*Creating prepared Statement object*/
+		PreparedStatement pstmt=con.prepareStatement(query);
+		
+		System.out.println("Enter id");
+		int id=Integer.parseInt(br.readLine());
+		
+		System.out.println("Enter specialization");
+		String specialization=br.readLine();
+		
+		System.out.println("Enter availability");
+		String availability=br.readLine();
+		
+		pstmt.setInt(1, id);
+		pstmt.setString(2, specialization);
+		pstmt.setString(3, availability);
+		pstmt.setString(4, doctorName);
+		
+		int i=pstmt.executeUpdate();
+		System.out.println(i+" "+"updation done");
+		con.close();
+	}
+
+	@Override
+	public void showTable(Connection con,Statement stmt) throws SQLException  {
+		String query="select * from doctordetails";
+		
+		/*Create preparedStatement object*/
+		PreparedStatement pstmt=con.prepareStatement(query);
+        ResultSet rs=pstmt.executeQuery();
+        
+        System.out.println("name"+"     "+"id"+"     "+"specialization"+"     "+"availability");
+        
+        while(rs.next())
+        {
+        	System.out.println(rs.getString(1)+" | "+rs.getInt(2)+" | "+rs.getString(3)+" | "+rs.getString(4));
+        }
+        con.close();
+	}
+
+	@Override
+	public void showSpecificDetails(Connection con,Statement stmt,BufferedReader br) throws SQLException, IOException {
+		String query="select * from doctordetails where specialization=?";
+		
+		System.out.println("Enter specialization");
+		String specialization=br.readLine();
+		
+		/*Create Object of prepared Statement*/
+		PreparedStatement pstmt=con.prepareStatement(query);
+		pstmt.setString(1, specialization);
+		
+		ResultSet rs=pstmt.executeQuery();
+		
+		System.out.println("Doctor name"+"  "+"ID"+"  "+"specialization"+"  "+"availability");
+		while(rs.next())
+		{
+			System.out.println(rs.getString(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getString(4));
+		}
+		con.close();
+
+	}
+
+	@Override
+	public void delete(Connection con,Statement stmt,BufferedReader br) throws SQLException, IOException {
+		String query="delete from doctordetails where name=? AND specialization=? AND id=?";
+		
+		System.out.println("Enter doctor name");
+		String doctorName=br.readLine();
+		System.out.println("Enter specialization");
+		String specialization=br.readLine();
+		/*Create Prepared Statement object*/
+        PreparedStatement pstmt=con.prepareStatement(query);
+        
+        
+	}
+
+}

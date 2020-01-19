@@ -1,0 +1,14 @@
+package com.shubham.cliniqueManagement;
+
+public interface IDoctor {
+
+	public void update();
+	
+	public void newEntry();
+	
+	public void showTable();
+	
+	public void showSpecificDetails();
+	
+	public void delete();
+}

@@ -1,0 +1,37 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.*;
+
+public class IDoctorImp implements IDoctor {
+
+	@Override
+	public void update(Connection con,Statement stmt) {
+		
+
+	}
+
+	@Override
+	public void newEntry() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showTable() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showSpecificDetails() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

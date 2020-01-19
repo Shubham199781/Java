@@ -1,0 +1,17 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+public interface IDoctor {
+
+	public void update(Connection con,Statement stmt) throws Exception;
+	
+	public void newEntry();
+	
+	public void showTable();
+	
+	public void showSpecificDetails();
+	
+	public void delete();
+}

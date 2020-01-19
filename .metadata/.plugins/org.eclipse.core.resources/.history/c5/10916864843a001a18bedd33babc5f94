@@ -1,0 +1,18 @@
+package com.shubham.cliniqueManagement;
+
+import java.io.BufferedReader;
+import java.sql.Connection;
+import java.sql.Statement;
+
+public interface IDoctor {
+
+	public void newEntry(Connection con,Statement stmt,BufferedReader br) throws Exception;
+	
+	public void update();
+	
+	public void showTable();
+	
+	public void showSpecificDetails();
+	
+	public void delete();
+}

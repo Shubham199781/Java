@@ -1,0 +1,12 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.*;
+
+public class DoctorManagement {
+public static void main(String[] args) throws Exception {
+	/*Registering Driver Class*/
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	
+}
+
+}

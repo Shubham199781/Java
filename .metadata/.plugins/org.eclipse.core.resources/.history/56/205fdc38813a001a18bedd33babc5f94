@@ -1,0 +1,48 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.*;
+
+public class IDoctorImp implements IDoctor {
+
+	@Override
+	public void update(Connection con,Statement stmt) throws Exception {
+		
+        String query="insert into doctordetails values(?,?,?,?)";
+        
+        PreparedStatement pstmt=con.prepareStatement(query);
+        pstmt.setString(1,"Shubham Pandey");
+        pstmt.setInt(2, 567);
+        pstmt.setString(3,"Heart");
+        pstmt.setString(4, "am");
+        
+        int i=pstmt.executeUpdate();
+        System.out.println(i+" "+"Update Successfull");
+        
+        con.close();
+	}
+
+	@Override
+	public void newEntry() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showTable() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void showSpecificDetails() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

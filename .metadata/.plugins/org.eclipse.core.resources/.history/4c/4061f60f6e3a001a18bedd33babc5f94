@@ -1,0 +1,8 @@
+package com.shubham.cliniqueManagement;
+
+import java.sql.*;
+
+public class DoctorManagement {
+/*Register the driver*/
+	
+}
